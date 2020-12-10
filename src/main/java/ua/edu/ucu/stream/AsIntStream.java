@@ -6,6 +6,7 @@ import ua.edu.ucu.iterators.*;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class AsIntStream implements IntStream {
     private final StreamIterator iterator;
@@ -15,7 +16,7 @@ public class AsIntStream implements IntStream {
     }
 
     public static IntStream of(int... values) {
-        return new AsIntStream(new BaseStreamIterator(values.clone()));
+        return new AsIntStream(new BaseStreamIterator(values));
     }
 
     @Override
@@ -121,10 +122,11 @@ public class AsIntStream implements IntStream {
 
     @Override
     public int reduce(int identity, IntBinaryOperator op) {
+        int result = identity;
         while (this.iterator.hasNext()) {
-            identity = op.apply(identity, this.iterator.next());
+            result = op.apply(result, this.iterator.next());
         }
-        return identity;
+        return result;
     }
 
     @Override
@@ -134,7 +136,7 @@ public class AsIntStream implements IntStream {
             list.add(this.iterator.next());
         }
         int[] array = new int[list.size()];
-        Iterator<Integer> iterator = list.iterator();
+        ListIterator<Integer> iterator = list.listIterator();
         for (int i = 0; i < array.length; i++) {
             array[i] = iterator.next();
         }

@@ -1,13 +1,11 @@
 package ua.edu.ucu.iterators;
 
-import lombok.Getter;
-
 public class BaseStreamIterator implements StreamIterator {
     private final int[] values;
     private int i = 0;
 
     public BaseStreamIterator(int[] values) {
-        this.values = values;
+        this.values = values.clone();
     }
 
     @Override

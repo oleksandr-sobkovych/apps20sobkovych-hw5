@@ -8,7 +8,8 @@ public class FlatMapIterator implements StreamIterator {
     private int[] current = new int[0];
     private int currentI = 0;
 
-    public FlatMapIterator(StreamIterator iterator, IntToIntStreamFunction function) {
+    public FlatMapIterator(StreamIterator iterator,
+                           IntToIntStreamFunction function) {
         this.iterator = iterator;
         this.function = function;
     }

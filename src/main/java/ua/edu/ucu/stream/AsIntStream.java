@@ -136,8 +136,9 @@ public class AsIntStream implements IntStream {
             list.add(this.iterator.next());
         }
         int[] array = new int[list.size()];
+        ListIterator<Integer> listIterator = list.listIterator();
         for (int i = 0; i < array.length; i++) {
-            array[i] = list.listIterator().next();
+            array[i] = listIterator.next();
         }
         return array;
     }

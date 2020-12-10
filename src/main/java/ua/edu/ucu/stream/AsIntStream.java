@@ -3,7 +3,6 @@ package ua.edu.ucu.stream;
 import ua.edu.ucu.function.*;
 import ua.edu.ucu.iterators.*;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
